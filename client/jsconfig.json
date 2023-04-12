@@ -1,6 +1,16 @@
 {
-    "compilerOptions": {
-        "baseUrl": "src"
-    },
-    "include": ["src"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*", "./dist/*", ""],
+      "pages/*": ["src/pages/*"],
+      "components/*": ["src/components/*"],
+      "types/*": ["src/@types/*"],
+      "public/*": ["public/*"]
+    }
+  },
+  "include": ["src"]
 }
+/**
+vite doesn't come with the default configuration of aliases,
+ but you can define your own aliases. */
