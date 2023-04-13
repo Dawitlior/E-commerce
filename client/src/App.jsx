@@ -8,21 +8,21 @@ import Navbar from "@/scenes/global/Navbar";
 import CartMenu from "@/scenes/global/CartMenu";
 import Footer from "@/scenes/global/Footer";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 const App = () => {
-  const ScrollToTop = () => {
-    const { pathname } = useLocation();
-
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [pathname]);
-
-    return null;
-  };
-
   return (
     <div className="app">
       <BrowserRouter>
-      <Navbar />
+        <Navbar />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
