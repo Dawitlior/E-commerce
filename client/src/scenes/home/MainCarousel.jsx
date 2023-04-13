@@ -6,13 +6,32 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { shades } from "@/theme";
 
 // imports all images from assets folder
-const importAll = (r) =>
-  r.keys().reduce((acc, item) => {
-    acc[item.replace("./", "")] = r(item);
-    return acc;
-  }, {});
+// const importAll = (r) => 
+//   r.keys().reduce((acc, item) => {
+//     acc[item.replace("./", "")] = r(item);
+//     return acc;
+//   }, {});
 
-const heroTextureImports = importAll(require.context("../../assets", false, /\.(png|jpe?g|svg)$/));
+// const heroTextureImports = importAll(
+//   require.context("../../assets",false, /\.(png|jpe?g|svg)$/)
+// );
+
+const heroTextureImports = {};
+
+(async () => {
+  const files = await import.meta.glob("@/assets/*.{png,jpg,jpeg,svg}");
+  for (const path in files) {
+    const fileName = path.replace("@/assets/", "");
+    const file = await files[path]();
+    console.log("🚀 ~ file: MainCarousel.jsx:26 ~ file:", file)
+    console.log(`Loaded ${fileName}`);
+    heroTextureImports[fileName] = file.default;
+    console.log("🚀 ~ file: MainCarousel.jsx:29 ~ file:", file)
+  }
+})();
+
+
+
 
 const MainCarousel = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -56,7 +75,7 @@ const MainCarousel = () => {
       {Object.values(heroTextureImports).map((texture, index) => (
         <Box key={`carousel-image-${index}`}>
           <img
-            src={texture}
+            src={`${texture}?v=${Date.now()}`}
             alt={`carousel-${index}`}
             style={{
               width: "100%",
