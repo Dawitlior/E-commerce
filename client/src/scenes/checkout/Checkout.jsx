@@ -4,13 +4,13 @@ import { Formik } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 import { shades } from "@/theme";
-// import Payment from "./Payment";
-// import Shipping from "./Shipping";
-// import { loadStripe } from "@stripe/stripe-js";
+import Payment from "@/scenes/checkout/Payment";
+import Shipping from "@/scenes/checkout/Shipping";
+import { loadStripe } from "@stripe/stripe-js";
 
-// const stripePromise = loadStripe(
-//   "pk_test_51LgU7yConHioZHhlAcZdfDAnV9643a7N1CMpxlKtzI1AUWLsRyrord79GYzZQ6m8RzVnVQaHsgbvN1qSpiDegoPi006QkO0Mlc"
-// );
+const stripePromise = loadStripe(
+  "pk_test_51MwlZVFRel3l9RIzScLqgFLn1KyzHGdvzYVebRza1cxLzGS5wPp2UxbcGSkWDH81xFjZWsuimv7Xfi6zPxH8RS58008AlhRdIU"
+);
 
 const initialValues = {
   billingAddress: {
@@ -92,6 +92,7 @@ const checkoutSchema = [
 
 
 const Checkout = () => {
+
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector((state) => state.cart.cart);
   const isFirstStep = activeStep === 0;
@@ -115,27 +116,28 @@ const Checkout = () => {
     actions.setTouched({});
   };
 
-  async function makePayment(values) {
-    const stripe = await stripePromise;
-    const requestBody = {
-      userName: [values.firstName, values.lastName].join(" "),
-      email: values.email,
-      products: cart.map(({ id, count }) => ({
-        id,
-        count,
-      })),
-    };
+   async function makePayment(values) {
+     const stripe = await stripePromise;
+     const requestBody = {
+       userName: [values.firstName, values.lastName].join(" "),
+       email: values.email,
+       products: cart.map(({ id, count }) => ({
+         id,
+         count,
+       })),
+     };
 
-    const response = await fetch("http://localhost:1337/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(requestBody),
-    });
-    const session = await response.json();
-    await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-  }
+     const response = await fetch("http://localhost:1337/api/orders", {
+       method: "POST",
+       headers: { "Content-Type": "application/json" },
+       body: JSON.stringify(requestBody),
+     });
+     const session = await response.json();
+     await stripe.redirectToCheckout({
+       sessionId: session.id,
+     });
+   }
+   
 
   return (
     <Box width="80%" m="100px auto">
