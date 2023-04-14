@@ -37,5 +37,4 @@ The application is designed to provide a seamless and secure online shopping exp
 
 
 
-+ https://shoppingace.netlify.app/
 
