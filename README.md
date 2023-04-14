@@ -32,6 +32,9 @@ The application is designed to provide a seamless and secure online shopping exp
 ![2023-04-14 (1)](https://user-images.githubusercontent.com/102303153/232067946-5f362e40-3a9f-4421-9f71-b4f8853aa0fe.png)
 ![2023-04-14 (2)](https://user-images.githubusercontent.com/102303153/232067972-05b5acd5-120d-4776-bd47-e6f00988ccb1.png)
 ![2023-04-14 (3)](https://user-images.githubusercontent.com/102303153/232068004-fbfc745f-4ade-47a2-b76f-3069017789ec.png)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/15d22e75-8263-4868-9ab6-6847efd8a350/deploy-status)](https://app.netlify.com/sites/liordawit/deploys)
+
+
 
 
 ##
