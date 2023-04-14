@@ -1,4 +1,5 @@
 # ShoppingAce - Full-Stack E-Commerce Application
++ Still in progress...
 #
 
 
@@ -37,4 +38,4 @@ The application is designed to provide a seamless and secure online shopping exp
 
 
 ##
-+ in progress...
+
