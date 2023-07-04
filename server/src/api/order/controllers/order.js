@@ -36,8 +36,9 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         payment_method_types: ["card"],
         customer_email: email,
         mode: "payment",
-        success_url: "https://shoppingace.netlify.app/",
-        cancel_url: "https://shoppingace.netlify.app/",
+        success_url: "http://127.0.0.1:5173/checkout/success",
+        cancel_url: "http://127.0.0.1:5173/",
+
         line_items: lineItems,
       });
 
