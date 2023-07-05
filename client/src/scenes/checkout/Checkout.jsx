@@ -128,7 +128,7 @@ const Checkout = () => {
      };
 
      const response = await fetch(
-       "https://server-ecommerce.netlify.app/api/orders",
+       "http://localhost:1337/api/orders",
        {
          method: "POST",
          headers: { "Content-Type": "application/json" },

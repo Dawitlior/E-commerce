@@ -25,7 +25,7 @@ const ItemDetails = () => {
 
   const getItem = async () => {
     const item = await fetch(
-      `https://server-ecommerce.netlify.app/api/items/${itemId}?populate=image`,
+      `http://localhost:1337/api/items/${itemId}?populate=image`,
       {
         method: "GET",
       }
@@ -36,7 +36,7 @@ const ItemDetails = () => {
 
   const getItems = async () => {
     const items = await fetch(
-      `https://server-ecommerce.netlify.app/api/items?populate=image`,
+      `"http://localhost:1337/api/items?populate=image`,
       {
         method: "GET",
       }
@@ -59,7 +59,7 @@ const ItemDetails = () => {
             alt={item?.name}
             width="100%"
             height="100%"
-            src={`https://server-ecommerce.netlify.app${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+            src={`http://localhost:1337${item?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
             style={{ objectFit: "contain" }}
           />
         </Box>
