@@ -21,7 +21,7 @@ const ShoppingList = () => {
 
   async function getItems() {
     const items = await fetch(
-      "http://localhost:1337/api/items?populate=image",
+      "https://server-e-commerce-pc5x1q3oa-dawitlior.vercel.app/api/items?populate=image",
       { method: "GET" }
     );
     const itemsJson = await items.json();
